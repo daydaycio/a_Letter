@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Me</title>
+</head>
+<body>
+  <style>
+    body {
+      background-color: pink;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    
+    #cute-image {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+  </style>
+  
+  <script>
+    var sentences = [
+      "WARNING!",
+      "ERROR",
+      "Hi Angelaa :>",
+      "I hope you're doing well.",
+      "There's something important I need to tell you.",
+      "Ever since we stopped talking, I've realized how much you mean to me.",
+      "I've become fond of you, and I can't keep it to myself any longer.",
+      "I think of you time to time, and I wanted you to know that.",
+      "I understand if this comes as a surprise,",
+	  "but I wanted to be honest with you.",
+      "Please take your time to process this,",
+      "and I'm here if you want to talk.",
+      "Sincerely,",
+	  "Dray <3",
+    ];
+
+    var sound = new Audio("element/cookie.mp3"); // Replace with the path to your sound file
+    sound.loop = true; // Loop the sound
+
+    // Play the sound when the user interacts with the page
+    document.addEventListener("click", function() {
+      sound.play();
+      document.removeEventListener("click", arguments.callee);
+    });
+
+    showNextSentence(0);
+
+    function showNextSentence(index) {
+      if (index >= sentences.length) {
+        // Show pink background and play the sound when the alerts are finished
+        document.body.style.backgroundColor = "pink";
+        
+        // Show the cute image when the alerts are finished
+        var cuteImage = document.getElementById("cute-image");
+        cuteImage.style.display = "block";
+        cuteImage.src = "https://gifdb.com/images/high/cute-quby-chan-wave-x4ez6u9oy0mm4yxx.gif"; // Replace with the URL of the GIF
+        return;
+      }
+
+      var sentence = sentences[index];
+      alert(sentence);
+
+      // Show the next sentence after the user clicks "OK" or equivalent button
+      setTimeout(function() {
+        showNextSentence(index + 1);
+      }, 100);
+    }
+  </script>
+  
+  <!-- Placeholder image before the alerts are finished -->
+  <img id="cute-image" src="https://gifdb.com/images/high/cute-quby-chan-wave-x4ez6u9oy0mm4yxx.gif" alt="Cute Image">
+</body>
+</html>
